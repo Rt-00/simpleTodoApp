@@ -9,8 +9,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
+import Animated, {
+  FadeInLeft, FadeOutLeft
+} from "react-native-reanimated";
 import uuid from "react-native-uuid";
 import Task from "./components/Task";
 
@@ -59,7 +62,15 @@ export default function App() {
 
           <View style={styles.items}></View>
           {taskList.map((task) => {
-            return <Task key={task.id} text={task.task} idTask={task.id} />;
+            return (
+              <Animated.View
+                key={task.id}
+                exiting={FadeOutLeft}
+                entering={FadeInLeft}
+              >
+                <Task text={task.task} idTask={task.id} />
+              </Animated.View>
+            );
           })}
         </View>
 

@@ -3,7 +3,6 @@ import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as Animatable from "react-native-animatable";
 
 export default function Task(props) {
   const [isChecked, setChecked] = useState(false);
@@ -19,10 +18,7 @@ export default function Task(props) {
   }
 
   return (
-    <Animatable.View
-      animation={!props.intentions ? "fadeInLeft" : "fadeOutLeft"}
-      style={styles.item}
-    >
+    <View style={styles.item}>
       <View style={styles.itemLeft}>
         <Checkbox
           style={styles.square}
@@ -47,7 +43,7 @@ export default function Task(props) {
           }}
         />
       </TouchableOpacity>
-    </Animatable.View>
+    </View>
   );
 }
 
